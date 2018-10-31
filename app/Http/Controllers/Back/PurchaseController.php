@@ -61,7 +61,11 @@ class PurchaseController extends Controller
         /*
          * commission calculation to follow
          */
-        
+        $parent_id = Auth::user()->parent;
+        if ($parent_id != 0) {
+            $distributor = Vendor::where('id', $parent_id)->first();
+            
+        }
 
         $request->session()->flash('status', $message);
         $request->session()->flash('stat', $stat);
