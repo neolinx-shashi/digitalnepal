@@ -18,7 +18,7 @@
                     <td class="col-md-2" align="right">Customer: </td>
                     <td class="col-md-4">
                         <select name="user_id" id="user-id" class="form-control">
-                            <option value="0">Select Customer</option>
+                            <option value="0">- Select Customer -</option>
                             @foreach ($user as $val)
                                 <option value="{{ $val->id }}">{{ $val->name }}</option>
                             @endforeach
@@ -27,14 +27,23 @@
                     <td class="col-md-2" align="right">STB: </td>
                     <td class="col-md-4">
                         <select name="stb_id" id="stb-id" class="form-control">
-                            <option value="0">Select STB</option>
+                            <option value="0">- Select STB -</option>
                             @foreach ($stb as $val)
-                                <option value="{{ $val->stb_id }}">{{ $val->stb_no }}</option>
+                                <option value="{{ $val->stb_id }}">{{ $val->stb_number }}</option>
                             @endforeach    
                         </select>
                     </td>
                 </tr>
                 <tr>
+                    <td class="col-md-2" align="right">Package: </td>
+                    <td class="col-md-4">
+                        <select name="package_id" id="package-id" class="form-control">
+                            <option value="0">- Select Package -</option>
+                            @foreach ($package as $val)
+                                <option value="{{ $val->package_id }}">{{ $val->package_name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
                     <td align="right">Purchase Date: </td>
                     <td>
                         <div class="input-group date" id="datetimepicker2">
@@ -44,6 +53,8 @@
                             </div>
                         </div>
                     </td>
+                </tr>
+                <tr>
                     <td align="right">Expire Date: </td>
                     <td>
                         <div class="input-group date" id="datetimepicker3">
@@ -53,6 +64,7 @@
                             </div>
                         </div>
                     </td>
+                    <td colspan="2"></td>
                 </tr>
 
                 <tr>

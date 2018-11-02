@@ -17,6 +17,7 @@
                     <th>S. No.</th>
                     <th>STB No.</th>
                     <th>User</th>
+                    <th>Email</th>
                     <th>Executed Date</th>
                     <th>Start Date</th>
                     <th>Expire Date</th>
@@ -29,8 +30,9 @@
                     @foreach ($list as $key => $val)
                         <tr>
                             <td>{{ ($key + 1) * ($pageno + 1) }}</td>
-                            <td>{{ $val->stb_no }}</td>
+                            <td>{{ $val->stb_number }}</td>
                             <td>{{ $val->name }}</td>
+                            <td>{{ $val->email }}</td>
                             <td>{{ $val->exec_date }}</td>
                             <td>{{ $val->start_date }}</td>
                             <td>{{ $val->expire_date }}</td>
@@ -42,6 +44,8 @@
                     @endforeach
                     </tbody>
                     <tfoot><tr><td>{{ $list->links() }}</td></tr></tfoot>
+                @else
+                    <tr><td colspan="8" align="center">No Data.</td></tr>
                 @endif
             </table>
         </fieldset>

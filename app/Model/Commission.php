@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commission extends Model
 {
-    protected $table = 'commision_rate';
+    protected $table = 'commission';
 
-    protected $primaryKey = 'rate_id';
+    protected $primaryKey = 'commission_id';
 
-    protected $fillable = ['rate_percent', 'user_type'];
+    protected $fillable = ['user_id', 'commission_amount', 'commission_from', 'purchase_id'];
 }

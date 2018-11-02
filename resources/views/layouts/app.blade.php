@@ -37,29 +37,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;@guest
-
-                        @else
-                            <li><a href="{{ url('home') }}"><span class="glyphicon glyphicon-home"></span></a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Modules <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('vendor') }}">Vendors</a></li>
-                                    <li><a href="{{ url('channel') }}">Channels</a></li>
-                                    <li><a href="{{ url('package') }}">Packages</a></li>
-                                    <li><a href="{{ url('stb') }}">STB</a></li>
-                                    <li><a href="{{ url('stb-record') }}">STB Record</a></li>
-                                    <li><a href="{{ url('purchase') }}">STB Purchases</a></li>
-                                    <li><a href="{{ url('deposit') }}">Deposit</a></li>
-                                    <li><a href="{{ url('wallet') }}">Wallet</a></li>
-                                </ul>
-                            </li>
-                        @endguest
-
-                    </ul>
+                @include('partials.backmenu')
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

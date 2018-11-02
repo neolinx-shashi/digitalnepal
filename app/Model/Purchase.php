@@ -10,5 +10,5 @@ class Purchase extends Model
 
     protected $primaryKey = 'purchase_id';
 
-    protected $fillable = ['stb_id', 'user_id', 'seller_id', 'purchase_date', 'purchase_expire'];
+    protected $fillable = ['stb_id', 'user_id', 'seller_id', 'package_id', 'purchase_date', 'purchase_expire'];
 }

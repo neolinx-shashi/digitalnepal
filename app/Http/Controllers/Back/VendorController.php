@@ -25,22 +25,24 @@ class VendorController extends Controller
         );
 
         $this->middleware(function ($request, $next) {
-            $this->t = Auth::user()->type;
+            $this->user_type = Auth::user()->type;
 
-            if ($this->type == 'F') {
+            if ($this->user_type == 'F') {
                 $this->type = array(
-                    'D' => 'Distributor',
-                    'S' => 'Sub Distributor',
+                    'D' => 'Distributor'
+                );
+            } else if ($this->user_type == 'D') {
+                $this->type = array(
+                    'S' => 'Sub Distributor'
+                );
+            } else if ($this->user_type == 'S' || $this->user_type == 'G') {
+                $this->type = array(
                     'R' => 'Subscriber'
                 );
-            } else if ($this->type == 'D') {
+            } else if ($this->user_type == 'A') {
                 $this->type = array(
-                    'S' => 'Sub Distributor',
-                    'R' => 'Subscriber'
-                );
-            } else if ($this->type == 'S' || $this->type == 'G') {
-                $this->type = array(
-                    'R' => 'Subscriber'
+                    'F' => 'Franchisee',
+                    'G' => 'Agent'
                 );
             }
 
@@ -105,7 +107,8 @@ class VendorController extends Controller
     }
 
     public function edit($id) {
-        $list = Vendor::orderBy('name', 'asc')->where('type', '!=', 'A')->paginate(20);
+        $userId = Auth::user()->id;
+        $list = Vendor::orderBy('name', 'asc')->where('type', '!=', 'A')->where('parent', $userId)->paginate(20);
         $count = Vendor::where('type', '!=', 'A')->count();
         $pageno = (isset($_GET['page'])) ? 20 * ($_GET['page'] - 1) : 0;
         $action = 'Edit';

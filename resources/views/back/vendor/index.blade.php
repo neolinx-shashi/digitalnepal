@@ -9,6 +9,7 @@
             @include('partials.status')
 
             <div class="col-md-12">
+                <!--
                 <form>
                     <div class="col-md-4 pull-right">
                         <select name="type_choose" id="type-choose" class="form-control" onchange="listByType(this)">
@@ -21,6 +22,7 @@
                     <div class="clearfix"></div>
                     <br>
                 </form>
+                -->
             </div>
             <table class="table table-striped">
                 <tr>
@@ -44,10 +46,10 @@
                                     Distributor
                                 @elseif ($val->type == 'R')
                                     Subscriber
-                                @elseif ($val->type == 'V')
-                                    Vendor
+                                @elseif ($val->type == 'G')
+                                    Agent
                                 @elseif ($val->type == 'S')
-                                    Subvendor
+                                    Sub Distributor
                                 @endif
                             </td>
                             <td>
@@ -96,7 +98,7 @@
                         <select name="type" id="type" class="form-control">
                             <option value="0">Select User Type</option>
                             @foreach ($type as $key => $val)
-                                <option value="{{ $key }}" @if ($action == 'Edit' && $key == $detail->type) selected="selected" @endif>{{ $val }}</option>
+                                <option value="{{ $key }}" @if ($action == 'Edit' && $key == $detail->type) selected="selected" @elseif ($action == 'Add' && Auth::user()->type != 'A') selected="selected" @endif>{{ $val }}</option>
                             @endforeach
                         </select>
                         <span class="error"></span>

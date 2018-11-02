@@ -23,7 +23,7 @@
                                 <option value="{{ $val->stb_id }}">{{ $val->stb_number }}</option>
                             @endforeach
                         </select>
-                        <input type="text" name="stb_no" id="stb-no" class="form-control" value="{{{ $detail->stb_no or '' }}}"></td>
+                        <!--<input type="text" name="stb_no" id="stb-no" class="form-control" value="{{{ $detail->stb_no or '' }}}"></td>-->
                     <td class="col-md-2" align="right">STB Status: </td>
                     <td class="col-md-4"><input type="radio" value="1" name="stb_status" @if ($action == 'Edit' && $detail->stb_status == '1') checked @endif> Active <input type="radio" value="0" name="stb_status" @if ($action == 'Edit' && $detail->stb_status == '0') checked @endif> Inactive</td>
                 </tr>
@@ -82,6 +82,7 @@
 
 @section('extrajs')
     <script src="{{ url('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}" ></script>
     <script src="{{ url('/js/moment.js') }}"></script>
     <script src="{{ url('/js/bootstrap-datetimepicker.js') }}"></script>
     <script>

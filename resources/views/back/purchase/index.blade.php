@@ -16,6 +16,7 @@
                 <tr>
                     <th>S. No.</th>
                     <th>STB No.</th>
+                    <th>Package</th>
                     <th>Subscriber</th>
                     <th>Seller</th>
                     <th>Purchase Date</th>
@@ -29,7 +30,8 @@
                     @foreach ($list as $key => $val)
                         <tr>
                             <td>{{ ($key + 1) * ($pageno + 1) }}</td>
-                            <td>{{ $val->stb_no }}</td>
+                            <td>{{ $val->stb_number }}</td>
+                            <td>{{ $val->package_name }}</td>
                             <td>{{ $val->name }}</td>
                             <td>{{ $uname }}</td>
                             <td>{{ $val->purchase_date }}</td>
