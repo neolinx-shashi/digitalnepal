@@ -53,6 +53,16 @@ class PurchaseController extends Controller
                 ->where('stb_record.user_id', $uid)
                 ->get();
 
+        $registered_stb = Purchase::where('seller_id', $uid)->get();
+
+        foreach ($stb as $key => $val) {
+            foreach ($registered_stb as $reg) {
+                if ($reg->stb_id == $val->stb_id) {
+                    unset($stb[$key]);
+                }
+            }
+        }
+
         $user = Vendor::where('parent', $uid)->orderBy('name')->get();
         $today = date("Y-m-d");
 
