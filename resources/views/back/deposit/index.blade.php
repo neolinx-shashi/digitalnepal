@@ -66,7 +66,7 @@
                     <div class="form-group">
                         <label for="name">Name: </label>
                         <select name="user_id" id="user-id" class="form-control">
-                            <option value="0">Select Franchise</option>
+                            <option value="0">Select Vendor</option>
                             @foreach ($franchise as $key => $val)
                                 <option value="{{ $val->id }}" @if ($action == 'Edit' && $detail->name == $val->name) selected @endif>{{ $val->name }}</option>
                             @endforeach

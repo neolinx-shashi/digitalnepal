@@ -54,14 +54,6 @@ class StbRecordController extends Controller
                 ->orderBy('stb_number', 'asc')
                 ->get();
         } else {
-            /*
-            $stb = Stb::leftJoin('stb_record', 'stb.stb_id', '=', 'stb_record.stb_no')
-                ->where('stb_record.user_id', $userId)
-                //->where('stb_record.stb_no', NULL)
-                ->select('stb.*')
-                ->orderBy('stb_number', 'asc')
-                ->get();
-            */
             $stb = StbRecord::leftJoin('stb', 'stb_record.stb_no', '=', 'stb.stb_id')
                 ->select('stb.*')
                 ->where('stb_record.user_id', $userId)

@@ -46,3 +46,5 @@ Route::resource('/deposit', 'Back\DepositController');
 
 Route::resource('/wallet', 'Back\WalletController');
 Route::get('/check-deposit/{id}', 'Back\WalletController@checkDeposit');
+
+Route::resource('/commission', 'Back\CommissionController');

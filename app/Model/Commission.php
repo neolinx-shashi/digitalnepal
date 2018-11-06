@@ -10,5 +10,5 @@ class Commission extends Model
 
     protected $primaryKey = 'commission_id';
 
-    protected $fillable = ['user_id', 'commission_amount', 'commission_from', 'purchase_id'];
+    protected $fillable = ['user_id', 'commission_amount', 'commission_from', 'purchase_id', 'purchase_type'];
 }

@@ -125,7 +125,13 @@ class PurchaseController extends Controller
                     $user_id = '1';
                 }
 
-                $insert_commission = Commission::insert(['user_id' => $user_id, 'commission_amount' => $commission, 'commission_from' => $commission_from, 'purchase_id' => $purchase_id]);
+                $insert_commission = Commission::insert([
+                                        'user_id' => $user_id,
+                                        'commission_amount' => $commission,
+                                        'commission_from' => $commission_from,
+                                        'purchase_id' => $purchase_id,
+                                        'purchase_type' => 'P'
+                                    ]);
             }
         }
 

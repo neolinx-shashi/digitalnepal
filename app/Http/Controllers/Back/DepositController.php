@@ -21,8 +21,10 @@ class DepositController extends Controller
     }
 
     public function index() {
+        $userId = Auth::user()->id;
         $list = Deposit::leftJoin('users', 'deposit.user_id', '=', 'users.id')
             ->select('deposit.*', 'users.name')
+            ->where('users.parent', $userId)
             ->orderBy('users.name', 'asc')
             ->orderBy('deposit.created_at', 'desc')
             ->paginate(30);
@@ -31,7 +33,8 @@ class DepositController extends Controller
         $pageno = (isset($_GET['page'])) ? 20 * ($_GET['page'] - 1) : 0;
         $action = 'Add';
         $route = url('/deposit');
-        $franchise = Vendor::where('type', 'F')->get();
+        //$franchise = Vendor::where('type', 'F')->get();
+        $franchise = Vendor::where('parent', $userId)->get();
         $type = $this->type;
 
         return view('back.deposit.index', compact('list', 'count', 'pageno', 'action', 'route', 'franchise', 'type'));
@@ -56,8 +59,10 @@ class DepositController extends Controller
     }
 
     public function edit($id) {
+        $userId = Auth::user()->id;
         $list = Deposit::leftJoin('users', 'deposit.user_id', '=', 'users.id')
             ->select('deposit.*', 'users.name')
+            ->where('users.parent', $userId)
             ->orderBy('users.name', 'asc')
             ->orderBy('deposit.created_at', 'desc')
             ->paginate(30);
@@ -65,9 +70,10 @@ class DepositController extends Controller
         $pageno = (isset($_GET['page'])) ? 20 * ($_GET['page'] - 1) : 0;
         $action = 'Edit';
         $route = url('/deposit/' . $id);
-        $franchise = Vendor::where('type', 'F')->get();
+        //$franchise = Vendor::where('type', 'F')->get();
+        $franchise = Vendor::where('parent', $userId)->get();
         $type = $this->type;
-        $detail = Deposit::leftJoin('users', 'deposit.user_id', '=', 'users.id')->select('deposit.*', 'users.name')->first();
+        $detail = Deposit::leftJoin('users', 'deposit.user_id', '=', 'users.id')->select('deposit.*', 'users.name')->where('deposit.deposit_id', $id)->first();
 
         return view('back.deposit.index', compact('list', 'count', 'pageno', 'action', 'route', 'type', 'detail', 'franchise'));
     }

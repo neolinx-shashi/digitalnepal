@@ -17,6 +17,7 @@
                     <li><a href="{{ url('purchase') }}">STB Purchases</a></li>
                     <li><a href="{{ url('deposit') }}">Deposit</a></li>
                     <li><a href="{{ url('wallet') }}">Wallet</a></li>
+                    <li><a href="{{ url('commission') }}">Commission</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -35,6 +36,9 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('vendor') }}">Vendors</a></li>
                     <li><a href="{{ url('stb-record') }}">STB Record</a></li>
+                    <li><a href="{{ url('deposit') }}">Deposit</a></li>
+                    <li><a href="{{ url('wallet') }}">Wallet</a></li>
+                    <li><a href="{{ url('commission') }}">Commission</a></li>
                 </ul>
             </li>
         @elseif (Auth::user()->type == 'S' || Auth::user()->type == 'G')
@@ -45,6 +49,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('vendor') }}">Subscriber</a></li>
                     <li><a href="{{ url('purchase') }}">STB Purchases</a></li>
+                    <li><a href="{{ url('wallet') }}">Wallet</a></li>
+                    <li><a href="{{ url('commission') }}">Commission</a></li>
                 </ul>
             </li>
         @endif
